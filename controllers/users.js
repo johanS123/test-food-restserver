@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs')
 
 const User = require('../models/user');
 
-const usuariosGet = async (req = request, res = response) => {
+const usersGet = async (req = request, res = response) => {
 
     const { limit = 5, from = 0} = req.query;
     const query = { status: true };
@@ -21,10 +21,10 @@ const usuariosGet = async (req = request, res = response) => {
     });
 }
 
-const usuariosPost = async (req, res = response) => {
+const usersPost = async (req, res = response) => {
 
-    const { name, email, password, role, status } = req.body;
-    const user = new User({ name, email, password, role, status });
+    const { name, email, password, rol, status } = req.body;
+    const user = new User({ name, email, password, rol, status });
    
     // Encriptar la constraseña
     const salt = bcryptjs.genSaltSync();
@@ -40,7 +40,7 @@ const usuariosPost = async (req, res = response) => {
     });
 }
 
-const usuariosPut = async (req, res = response) => {
+const usersPut = async (req, res = response) => {
 
     const { id } = req.params;
     const { _id, password, google, ...resto } = req.body;
@@ -57,14 +57,14 @@ const usuariosPut = async (req, res = response) => {
     res.status(400).json(user);
 }
 
-const usuariosPatch = (req, res = response) => {
+const usersPatch = (req, res = response) => {
     res.json({
         ok: true,
         msg: 'patch API - controlador'
     });
 }
 
-const usuariosDelete = async (req, res = response) => {
+const usersDelete = async (req, res = response) => {
 
     const { id } = req.params;
 
@@ -75,9 +75,9 @@ const usuariosDelete = async (req, res = response) => {
 }
 
 module.exports =  {
-    usuariosGet,
-    usuariosPost,
-    usuariosPut,
-    usuariosPatch,
-    usuariosDelete
+    usersGet,
+    usersPost,
+    usersPut,
+    usersPatch,
+    usersDelete
 }

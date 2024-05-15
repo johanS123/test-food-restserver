@@ -17,7 +17,7 @@ const UserSchema = Schema({
     img: {
         type: String
     },
-    role: {
+    rol: {
         type: String,
         default: 'USER_ROLE',
         enum: ['ADMIN_ROLE', 'USER_ROLE']
@@ -25,10 +25,6 @@ const UserSchema = Schema({
     status: {
         type: Boolean,
         default: true
-    },
-    google: {
-        type: Boolean,
-        default: false
     }
 });
 
